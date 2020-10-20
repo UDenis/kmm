@@ -4,6 +4,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("kotlin-android-extensions")
+    id("org.jetbrains.kotlin.native.cocoapods")
 }
 group = "ru.den.kmm"
 version = "1.0-SNAPSHOT"
@@ -18,9 +19,6 @@ kotlin {
     android()
     ios {
         binaries {
-            framework {
-                baseName = "shared"
-            }
         }
     }
     sourceSets {
@@ -44,6 +42,12 @@ kotlin {
         }
         val iosMain by getting
         val iosTest by getting
+    }
+
+    cocoapods {
+        summary = "shared code"
+        homepage = "shared code home page"
+        podfile = project.file("../iosApp/Podfile")
     }
 }
 android {
