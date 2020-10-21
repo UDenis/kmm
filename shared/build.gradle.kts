@@ -25,6 +25,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(Deps.Coroutines.core)
+                implementation(project(":bignumber"))
             }
         }
         val commonTest by getting {

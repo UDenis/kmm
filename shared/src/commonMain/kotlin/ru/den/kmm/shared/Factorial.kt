@@ -4,8 +4,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
+import ru.den.bignumber.BigInteger
+import ru.den.bignumber.BigNumber
+import ru.den.bignumber.toBigInteger
 import kotlin.math.min
 
 class Factorial {
@@ -17,7 +19,7 @@ class Factorial {
         val computationRangeSize = factorialArgument / numberOfThreads
         var nextComputationRangeStart = 1L
 
-        val computationRangeResultList = ArrayList<Deferred<Long>>(numberOfThreads)
+        val computationRangeResultList = ArrayList<Deferred<BigInteger>>(numberOfThreads)
         for (i in 0 until numberOfThreads) {
 
             computationRangeResultList.add(
@@ -31,18 +33,18 @@ class Factorial {
             nextComputationRangeStart = nextComputationRangeStart + computationRangeSize + 1
         }
 
-        var result = 1L
+        var result: BigInteger = BigNumber.one
         for (i in 0 until numberOfThreads) {
-            result *= computationRangeResultList[i].await()
+            result = result.multiply(computationRangeResultList[i].await())
         }
         return@withContext result.toString()
     }
 
-    private suspend fun calcRange(scope: CoroutineScope, from: Long, to: Long) : Deferred<Long> {
+    private fun calcRange(scope: CoroutineScope, from: Long, to: Long): Deferred<BigInteger> {
         return scope.async {
-            var result = 1L
+            var result: BigInteger = BigNumber.one
             for (i in from..to) {
-                result *= i
+                result = result.multiply(i.toBigInteger())
             }
             return@async result
         }

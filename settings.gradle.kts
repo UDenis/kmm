@@ -1,3 +1,4 @@
+include(":bignumber")
 pluginManagement {
     repositories {
         gradlePluginPortal()
