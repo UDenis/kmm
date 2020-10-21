@@ -22,7 +22,11 @@ kotlin {
         }
     }
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation(Deps.Coroutines.core)
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
@@ -40,7 +44,15 @@ kotlin {
                 implementation("junit:junit:4.12")
             }
         }
-        val iosMain by getting
+        val iosMain by getting {
+            dependencies {
+                implementation(Deps.Coroutines.core) {
+                    version {
+                        strictly(Deps.Coroutines.ver)
+                    }
+                }
+            }
+        }
         val iosTest by getting
     }
 

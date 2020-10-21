@@ -18,6 +18,7 @@
 		7555FFB2242A642300829871 /* shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7555FFB1242A642300829871 /* shared.framework */; };
 		7555FFB3242A642300829871 /* shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7555FFB1242A642300829871 /* shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AFFF5CD5060184950E8DDA9 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D79BD18089BF92DD90D1A5E /* Pods_iosApp.framework */; };
+		92F88BC7253F0A8B00EA0E07 /* DelayedUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F88BC6253F0A8B00EA0E07 /* DelayedUpdater.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		7555FFA2242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7555FFB1242A642300829871 /* shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = shared.framework; path = "../shared/build/xcode-frameworks/shared.framework"; sourceTree = "<group>"; };
 		834EEE48A04503E464C3A92A /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
+		92F88BC6253F0A8B00EA0E07 /* DelayedUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedUpdater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +107,6 @@
 				600EB5D7DBC17377C59E4230 /* Pods-iosApp.debug.xcconfig */,
 				834EEE48A04503E464C3A92A /* Pods-iosApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -141,6 +142,7 @@
 				7555FF89242A565B00829871 /* LaunchScreen.storyboard */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				7555FF86242A565B00829871 /* Preview Content */,
+				92F88BC6253F0A8B00EA0E07 /* DelayedUpdater.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -356,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92F88BC7253F0A8B00EA0E07 /* DelayedUpdater.swift in Sources */,
 				7555FF7F242A565900829871 /* AppDelegate.swift in Sources */,
 				7555FF81242A565900829871 /* SceneDelegate.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
