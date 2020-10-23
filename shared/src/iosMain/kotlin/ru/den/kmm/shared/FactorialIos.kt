@@ -2,22 +2,23 @@ package ru.den.kmm.shared
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
+import ru.den.logs.Log4m
 
-class FactorialIos : CoroutineScope {
+class FactorialIos {
+
+    private val scope: CoroutineScope = NativeScope(
+        context = Dispatchers.Main
+    )
 
     private val factorial = Factorial()
 
     fun calc(arg: Long, callback: (String?, Throwable?) -> Unit) {
-        wrap(callback) {
+        scope.wrap(callback) {
+            Log4m.d("Factorial", "start 2")
             factorial.calc(arg)
         }
     }
-
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.Main + Job()
 }
 
 internal fun <T> CoroutineScope.wrap(
@@ -26,8 +27,10 @@ internal fun <T> CoroutineScope.wrap(
 ) {
     launch {
         try {
+            Log4m.d("Factorial", "start 1")
             callback(block(), null)
         } catch (e: Exception) {
+            Log4m.d("Factorial", e)
             callback(null, e)
         }
     }

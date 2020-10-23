@@ -1,3 +1,4 @@
+include(":logs")
 include(":bignumber")
 pluginManagement {
     repositories {

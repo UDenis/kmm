@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.den.kmm.shared.Factorial
 import ru.den.kmm.shared.Greeting
+//import ru.den.logs.Log4m
 
 fun greet(): String {
     return Greeting().greeting()
@@ -32,13 +33,17 @@ class MainActivity : AppCompatActivity() {
             val text = editText.text.toString()
 
             if (text.isEmpty()) return@setOnClickListener
-            val number = text.tryToLong()?:return@setOnClickListener
+            val number = text.tryToLong() ?: return@setOnClickListener
 
             btn.isEnabled = false
 
             lifecycleScope.launch {
                 val result = Factorial().calc(number)
                 withContext(Dispatchers.Main) {
+//                    Log4m.d(
+//                        message = "set result",
+//                        tag = "Factorial"
+//                    )
                     resultTv.text = result
                     btn.isEnabled = true
                 }
@@ -47,10 +52,10 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-fun String.tryToLong():Long? {
+fun String.tryToLong(): Long? {
     return try {
         toLong()
-    } catch (ex:NumberFormatException){
+    } catch (ex: NumberFormatException) {
         null
     }
 }

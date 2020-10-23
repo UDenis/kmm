@@ -5,17 +5,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlin.coroutines.CoroutineContext
 
-class MainScope(
-    private val mainContext: CoroutineContext = Dispatchers.Main,
+class NativeScope(
+    private val context: CoroutineContext = Dispatchers.Main,
     private val job: Job = Job()
 ) : CoroutineScope {
 
     override val coroutineContext: CoroutineContext
-        get() = mainContext + job
-
+        get() = context + job
 
     fun onDestroy() {
         job.cancel()
     }
-
 }

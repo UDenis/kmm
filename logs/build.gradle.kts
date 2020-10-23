@@ -35,7 +35,7 @@ kotlin {
     ios {
         binaries {
             framework {
-                baseName = "bignumber"
+                baseName = "logs"
             }
         }
     }

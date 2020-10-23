@@ -13,7 +13,7 @@ class DelayedUpdater:ObservableObject {
     @Published var result = ""
     
     func caclFactorial() {
-        FactorialIos().calc(arg: 12) { (r, error) -> () in
+        FactorialIos().calc(arg: 22) { (r, error) -> () in
             self.result = r ?? ""
         }
     }
